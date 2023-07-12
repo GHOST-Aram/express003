@@ -1,0 +1,13 @@
+<%-include('../partials/head.ejs') %>
+<body>
+    <header><%= heading %></header>
+    <%-include('../partials/nav.ejs') %>
+
+    <p><strong>Phone:</strong> <%=contact.phone %></p>
+    <p><strong>Email:</strong> <%=contact.email %></p>
+    <p><strong>Address:</strong> <%=contact.address %></p>
+    <p><strong>Block:</strong> <%=contact.block %></p>
+
+    <%-include('../partials/footer.ejs') %>
+</body>
+</html>
