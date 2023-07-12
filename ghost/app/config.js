@@ -1,12 +1,22 @@
-import * as ejs from 'ejs'
-import * as express  from "express";
-import { VIEWS_DIR } from '../../settings';
-import { VIEW_ENGINE } from '../../settings';
+import { app } from './init.js';
+import { 
+    VIEWS_DIR,
+    VIEW_ENGINE ,
+    PORT, 
+    STATIC_DIR 
+} from '../../settings.js';
+import { Server } from '../server/server.js';
 
-const app = express()
+const config = () => {
+    const server = new Server(app)
+    server.listen(PORT)
+    
+    server.setStaticDir(STATIC_DIR)
+    server.setViewEngine(VIEW_ENGINE)
+    server.setViewDirectory(VIEWS_DIR)
+}
 
-// Views config 
-app.set('view engine', VIEW_ENGINE === 'ejs' && ejs)
-app.set('./catalog/templates', VIEWS_DIR)
+export {config}
 
-export {app}
+
+
